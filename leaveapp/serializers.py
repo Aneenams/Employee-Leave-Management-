@@ -16,20 +16,20 @@ class UserSerializer(serializers.ModelSerializer):
 class LeaveSerializer(serializers.ModelSerializer):
     class Meta:
         model=Leave
-        fields=['employee_name','reason','start_date','end_date','leave_type']
-        read_only_fields=['id','hr_name']
+        fields='__all__'
+        read_only_fields=['id','head_name']
 
        
   
-    # def validate_start_date(self, data):
-    #     if data<=2025:
-    #         return serializers.ValidationError("start date cannot be in past ")
-    #     return data    
+    def validate_start_date(self, data):
+        if data <=datetime.now:
+            return serializers.ValidationError("start date cannot be in past ")
+        return data    
 
-    # def validate_end_date(self,data):
-    #     if data>self.validate_start_date:
-    #         return serializers.ValidationError("end_date cannot be before start date ")
-    #     return data
+    def validate_end_date(self,data):
+        if data>self.validate_start_date:
+            return serializers.ValidationError("end_date cannot be before start date ")
+        return data
 
 
 

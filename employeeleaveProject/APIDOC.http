@@ -1,0 +1,119 @@
+# API call for user register
+
+###
+POST http://127.0.0.1:8000/register/
+Content-Type: application/json
+
+{
+    "username":"ammu",
+    "password":"ammu123",
+    "email":"ammu@gamil.com"
+}
+
+
+###
+POST http://127.0.0.1:8000/register/
+Content-Type: application/json
+
+{
+    "username":"aa",
+    "password":"aa123",
+    "email":"aa@gamil.com"
+}
+
+
+
+# API call for token request
+###
+POST http://127.0.0.1:8000/login 
+Content-Type: application/json
+
+{
+    "username":"ammu",
+    "password":"ammu123"
+}
+
+
+# token of ammu
+###
+@token=026a21ee4354c6329902e38b586e5f9ba38b8106
+
+
+# # token of aa
+# ###
+# @token=106dee2d661ee5ec04f889b1a7b5d1947a432c28
+
+
+#API call for view user
+GET http://127.0.0.1:8000/leave/
+Authorization: Token {{token}}
+
+
+
+# API call for leave generate/ create leave request
+###
+POST http://127.0.0.1:8000/leave/
+Content-Type: application/json
+Authorization: Token {{token}}
+
+{
+    "employee_name":"abukkoooo",
+    "reason":"chummaa",
+    "start_date":"2026-09-28",
+    "end_date":"2026-10-19",
+    "leave_type":"Casual"
+}
+
+# API call for get detail view
+###
+GET  http://127.0.0.1:8000/leave/
+Authorization: Token {{token}}
+
+
+
+# API call for get single leave request
+###
+GET  http://127.0.0.1:8000/leave/7
+Authorization: Token {{token}}
+
+# API call for get update view
+###
+PATCH   http://127.0.0.1:8000/leave/2
+Content-Type: application/json
+Authorization: Token {{token}}
+
+{
+    "id": 2,
+    "employee_name": "abukka",
+    "reason": "cold",
+    "start_date": "2026-09-28",
+    "end_date": "2026-10-09",
+    "leave_type": "Sick",
+    "status": "Approved",
+    "head_name": 3
+}
+
+
+
+# API call for delete leave reuqest
+
+###
+DELETE   http://127.0.0.1:8000/leave/2
+Content-Type: application/json
+Authorization: Token {{token}}
+
+
+
+# API call for test date
+###
+POST http://127.0.0.1:8000/leave/
+Content-Type: application/json
+Authorization: Token {{token}}
+
+{
+    "employee_name":"abuuu",
+    "reason":"fever cold",
+    "start_date":"2025-09-28",
+    "end_date":"2026-10-19",
+    "leave_type":"Sick"
+}

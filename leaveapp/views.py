@@ -16,29 +16,23 @@ class LeaveCreateListView(CreateAPIView,ListAPIView):
     permission_classes=[permissions.IsAuthenticated]
 
     def perform_create(self, serializer):
-        serializer.save(hr_name=self.request.user)
+        serializer.save(head_name=self.request.user)
+        return ("created successfully")
 
     def get_queryset(self):
-        queryset=Leave.objects.filter(hr_name=self.request.user)
-
-        # start_date=self.request.query_params.get('start_date')
-        # if start_date:
-        #     queryset=queryset.filter(start_date=start_date)
-
-        # end_date=self.request.query_params.get('end_date')
-        # if end_date<start_date:
-        #     raise ValueError("end date cannot be before starting date")
-
-
-
+        queryset=Leave.objects.filter(head_name=self.request.user)
         return queryset
 
 
 
 
 class LeaveDetailView(RetrieveAPIView,UpdateAPIView,DestroyAPIView):
+    serializer_class=LeaveSerializer
+    authentication_classes=[authentication.TokenAuthentication]
+    permission_classes=[permissions.IsAuthenticated]
+    
     def get_queryset(self):
-        return Leave.objects.filter(hr_name=self.request.user)
+        return Leave.objects.filter(head_name=self.request.user)
 
 
 
