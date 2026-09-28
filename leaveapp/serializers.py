@@ -21,15 +21,15 @@ class LeaveSerializer(serializers.ModelSerializer):
 
        
   
-    def validate_start_date(self, data):
-        if data <=datetime.now:
-            return serializers.ValidationError("start date cannot be in past ")
-        return data    
+    # def validate_start_date(self, data):
+    #     if data <=datetime.now:
+    #         return serializers.ValidationError("start date cannot be in past ")
+    #     return data    
 
-    def validate_end_date(self,data):
-        if data>self.validate_start_date:
-            return serializers.ValidationError("end_date cannot be before start date ")
-        return data
+    # def validate_end_date(self,data):
+    #     if data>self.validate_start_date:
+    #         return serializers.ValidationError("end_date cannot be before start date ")
+    #     return data
 
 
 
